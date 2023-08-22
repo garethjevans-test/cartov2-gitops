@@ -1,0 +1,36 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: app-maven-kpack-sp
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: app-maven-kpack-sp
+spec:
+  template:
+    containers:
+    - env:
+      - name: JAVA_TOOL_OPTIONS
+        value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+      image: gcr.io/ship-interfaces-dev/app-maven-kpack-sp@sha256:fed742d8b2b378ab0292e3c37b80caa11b14152e6ddc01c1bd0b2b447b4cc87d
+      livenessProbe:
+        httpGet:
+          path: /livez
+          port: 8080
+          scheme: HTTP
+      name: workload
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      readinessProbe:
+        httpGet:
+          path: /readyz
+          port: 8080
+          scheme: HTTP
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
