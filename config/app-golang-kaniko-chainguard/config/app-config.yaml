@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: app-golang-kaniko-chainguard
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: app-golang-kaniko-chainguard
+spec:
+  template:
+    containers:
+    - image: gcr.io/ship-interfaces-dev/app-golang-kaniko-chainguard@sha256:68e2bc1a2c6bbb1322f369d2e27e6d9581fd6029047c41f07ce1aef4ec604a51
+      name: workload
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
