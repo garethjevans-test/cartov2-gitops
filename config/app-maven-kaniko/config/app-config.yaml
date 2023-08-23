@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: app-maven-kaniko
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: app-maven-kaniko
+spec:
+  template:
+    containers:
+    - image: gcr.io/ship-interfaces-dev/app-maven-kaniko@sha256:5acdd30e8c902cf454bedb4838e7e5b7f638fa3971fa152f9cb61165aa2beed6
+      name: workload
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
