@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: app-maven-kaniko-subpath
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: app-maven-kaniko-subpath
+spec:
+  template:
+    containers:
+    - image: gcr.io/ship-interfaces-dev/app-maven-kaniko-subpath@sha256:bfc2284b2179fae3ddbcdc70df69c06128dbb2161b12fc92a9c1a303ef3bec60
+      name: workload
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
