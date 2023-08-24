@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: app-golang-kaniko-subpath
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: app-golang-kaniko-subpath
+spec:
+  template:
+    containers:
+    - image: gcr.io/ship-interfaces-dev/app-golang-kaniko-subpath@sha256:0a1c6b595ada5f4500251248fecfc2cd28c7558c317b63b8d898954d667c66e6
+      name: workload
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
