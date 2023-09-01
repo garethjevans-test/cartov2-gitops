@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: where-for-dinner-crawler
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: where-for-dinner-crawler
+spec:
+  template:
+    containers:
+    - env:
+      - name: JAVA_TOOL_OPTIONS
+        value: -Dserver.port="8080"
+      image: gcr.io/ship-interfaces-dev/where-for-dinner-crawler@sha256:1bf90819e779cf34048598aa090b8f82f7812e06047c0d705690012eb2bddfe3
+      name: workload
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
