@@ -1,0 +1,36 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: where-for-dinner-search
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/component: run
+    carto.run/workload-name: where-for-dinner-search
+spec:
+  template:
+    containers:
+    - env:
+      - name: JAVA_TOOL_OPTIONS
+        value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080"
+      image: gcr.io/ship-interfaces-dev/where-for-dinner-search@sha256:de2bf68b56fa5277c6cf4bf2baa0aa451562da9807f98c1009c9a2eda78c5da5
+      livenessProbe:
+        httpGet:
+          path: /livez
+          port: 8080
+          scheme: HTTP
+      name: workload
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      readinessProbe:
+        httpGet:
+          path: /readyz
+          port: 8080
+          scheme: HTTP
+      resources: {}
+      securityContext:
+        runAsUser: 1000
+    serviceAccountName: default
