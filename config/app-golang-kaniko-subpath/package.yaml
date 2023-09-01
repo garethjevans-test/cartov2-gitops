@@ -1,0 +1,24 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: app-golang-kaniko-with-subpath.carto.run.20230901102627.0.0
+spec:
+  refName: app-golang-kaniko-with-subpath.carto.run
+  version: 20230901102627.0.0
+  releaseNotes: |
+    Release v20230901102627.0.0 of package app-golang-kaniko-with-subpath.carto.run
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: gcr.io/ship-interfaces-dev/app-golang-kaniko-subpath-bundle@sha256:34517b60e2f92503e45acc7e8791c5ba06ca3e52fa0666cd72ead86d4318b6d7
+      template:
+      - ytt:
+          paths:
+          - "config/"
+      - kbld:
+          paths:
+          - ".imgpkg/images.yml"
+          - "-"
+      deploy:
+      - kapp: {}
