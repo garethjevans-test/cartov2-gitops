@@ -12,10 +12,14 @@ spec:
      url: https://github.com/garethjevans-test/cartov2-gitops
      ref: origin/main
      subPath: mypackage.example.com/packages
+     secretRef:
+       name: git-github
  - git:
      url: https://github.com/garethjevans-test/cartov2-gitops
      ref: origin/main
      subPath: mypackage.example.com/staging
+     secretRef:
+       name: git-github
  template:
  - ytt: {}
  deploy:
