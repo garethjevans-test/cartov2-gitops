@@ -1,0 +1,14 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+ name: mypackage
+spec:
+ serviceAccountName: default
+ packageRef:
+   refName: mypackage.example.com
+   versionSelection:
+     constraints: 20231005105519.0.0
+# values:
+# - secretRef:
+#     name: app-values
