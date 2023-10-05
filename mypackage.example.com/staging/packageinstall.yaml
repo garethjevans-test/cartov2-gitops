@@ -8,4 +8,4 @@ spec:
  packageRef:
    refName: mypackage.example.com
    versionSelection:
-     constraints: >=0.0.0
+     constraints: ">=0.0.0"
