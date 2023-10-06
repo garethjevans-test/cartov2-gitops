@@ -1,0 +1,24 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: mypackage.example.com.20231006103203.0.0
+spec:
+  refName: mypackage.example.com
+  version: 20231006103203.0.0
+  releaseNotes: |
+    Release v20231006103203.0.0 of package mypackage.example.com
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: gcr.io/ship-interfaces-dev/example/example-bundle@sha256:50162a1acf30233ca79315696b226d3b8a66a495222ecfa84b44cc33c7afb369
+      template:
+      - ytt:
+          paths:
+          - "config/"
+      - kbld:
+          paths:
+          - ".imgpkg/images.yml"
+          - "-"
+      deploy:
+      - kapp: {}
