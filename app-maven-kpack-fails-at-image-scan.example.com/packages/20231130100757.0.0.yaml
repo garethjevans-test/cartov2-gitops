@@ -1,0 +1,24 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: app-maven-kpack-fails-at-image-scan.example.com.20231130100757.0.0
+spec:
+  refName: app-maven-kpack-fails-at-image-scan.example.com
+  version: 20231130100757.0.0
+  releaseNotes: |
+    Release v20231130100757.0.0 of package app-maven-kpack-fails-at-image-scan.example.com
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: gcr.io/ship-interfaces-dev/app-maven-kpack-fails-at-image-scan/app-maven-kpack-fails-at-image-scan-bundle@sha256:18329bc24235f0215ce60a1f6e2946d0a7b1512e43265e6e49d53e96fadbc2bf
+      template:
+      - ytt:
+          paths:
+          - "config/"
+      - kbld:
+          paths:
+          - ".imgpkg/images.yml"
+          - "-"
+      deploy:
+      - kapp: {}
