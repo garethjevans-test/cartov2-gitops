@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: maven-app.example.com
     versionSelection:
-      constraints: 20240126161802.0.0
+      constraints: 20240126183541.0.0
       prereleases: {}
   serviceAccountName: default
   values:
