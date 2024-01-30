@@ -1,0 +1,14 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: steeltoe-app-new2.example.com-pkgi
+spec:
+  packageRef:
+    refName: steeltoe-app-new2.example.com
+    versionSelection:
+      constraints: 20240130142446.0.0
+      prereleases: {}
+  serviceAccountName: default
+  values:
+  - secretRef:
+      name: steeltoe-app-new2-secret
