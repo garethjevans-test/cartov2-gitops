@@ -1,0 +1,14 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: maven-app-package.example.com-pkgi
+spec:
+  packageRef:
+    refName: maven-app-package.example.com
+    versionSelection:
+      constraints: 20240131155808.0.0
+      prereleases: {}
+  serviceAccountName: default
+  values:
+  - secretRef:
+      name: maven-app-package-secret
