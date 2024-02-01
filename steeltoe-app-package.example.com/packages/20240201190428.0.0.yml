@@ -1,0 +1,28 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: steeltoe-app-package.example.com.20240201190428.0.0
+spec:
+  refName: steeltoe-app-package.example.com
+  version: 20240201190428.0.0
+  releaseNotes: |
+    Release v20240201190428.0.0 of package steeltoe-app-package.example.com
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: shepherdeded3ce12615ab1a1818e8a8.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:0b4699999192bac14b2eca6d33a3d066e513e73d040e2171a6cdd213d793a65e
+      template:
+      - ytt:
+          paths:
+          - '-'
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      nullable: true
+      default: null
