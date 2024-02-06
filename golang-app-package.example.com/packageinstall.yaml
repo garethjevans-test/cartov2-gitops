@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: golang-app-package.example.com
     versionSelection:
-      constraints: 20240206021516.0.0
+      constraints: 20240206040726.0.0
       prereleases: {}
   serviceAccountName: default
   values:
