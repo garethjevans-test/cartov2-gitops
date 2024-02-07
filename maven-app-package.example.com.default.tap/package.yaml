@@ -1,0 +1,67 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: maven-app-package.example.com.default.tap.20240207202739.0.0
+spec:
+  refName: maven-app-package.example.com.default.tap
+  version: 20240207202739.0.0
+  releaseNotes: |
+    Release v20240207202739.0.0 of package maven-app-package.example.com.default.tap
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: shepherd5ff610847b5bf3dae6bcce9e.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:217dc4a0cbdabd11c4f3e014bda3326e2112c2a44d95b3364863179f9a1e270b
+      template:
+      - ytt:
+          paths:
+          - .
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      type: object
+      additionalProperties: false
+      properties:
+        workload_name:
+          type: string
+          description: Used to generate resource names.
+          default: maven-app-package
+        minScale:
+          type: integer
+          nullable: true
+          description: If set, overrides the default Knative Service minimum number of replicas.
+          default: null
+        maxScale:
+          type: integer
+          nullable: true
+          description: If set, overrides the default Knative Service maximum number of replicas.
+          default: null
+        livenessProbe:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].livenessProbe set by the Supply Chain.
+          default: null
+        readinessProbe:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].readinessProbe set by the Supply Chain.
+          default: null
+        resources:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].resources set by the Supply Chain.
+          default: null
+        env:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].env set by the Supply Chain.
+          default: null
+        securityContext:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].securityContext set by the Supply Chain.
+          default: null
+        knativeAnnotations:
+          nullable: true
+          description: Specifies additional annotations to merge into Knative Service.spec.metadata.annotations.
+          default: null
