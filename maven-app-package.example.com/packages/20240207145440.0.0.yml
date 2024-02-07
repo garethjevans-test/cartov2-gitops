@@ -1,0 +1,28 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: maven-app-package.example.com.20240207145440.0.0
+spec:
+  refName: maven-app-package.example.com
+  version: 20240207145440.0.0
+  releaseNotes: |
+    Release v20240207145440.0.0 of package maven-app-package.example.com
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: shepherdb4aafa85116b1b13e392e6ec.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:b45373eb2aaddb99d10ff3ae15dc267b025b27bb90f3a35470615392c2fe0264
+      template:
+      - ytt:
+          paths:
+          - '-'
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      nullable: true
+      default: null
