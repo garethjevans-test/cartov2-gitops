@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: steeltoe-app-package.default.tap-values
+stringData:
+  values.yml: |
+    ---
+    # workload_name: example

@@ -1,0 +1,14 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: steeltoe-app-package.default.tap-pkgi
+spec:
+  packageRef:
+    refName: steeltoe-app-package.default.tap
+    versionSelection:
+      constraints: 20240208163016.0.0
+      prereleases: {}
+  serviceAccountName: default
+  values:
+  - secretRef:
+      name: steeltoe-app-package.default.tap-values
