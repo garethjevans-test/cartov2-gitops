@@ -1,0 +1,14 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: where-for-dinner-api-gateway.default.tap-pkgi
+spec:
+  packageRef:
+    refName: where-for-dinner-api-gateway.default.tap
+    versionSelection:
+      constraints: 20240212102806.0.0
+      prereleases: {}
+  serviceAccountName: default
+  values:
+  - secretRef:
+      name: where-for-dinner-api-gateway.default.tap-values
