@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: where-for-dinner-availability.default.tap
     versionSelection:
-      constraints: 20240212113154.0.0
+      constraints: 20240212115553.0.0
       prereleases: {}
   serviceAccountName: default
   values:

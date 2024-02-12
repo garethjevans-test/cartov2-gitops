@@ -1,12 +1,12 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: where-for-dinner-availability.default.tap.20240212113154.0.0
+  name: where-for-dinner-availability.default.tap.20240212115553.0.0
 spec:
   refName: where-for-dinner-availability.default.tap
-  version: 20240212113154.0.0
+  version: 20240212115553.0.0
   releaseNotes: |
-    Release v20240212113154.0.0 of package where-for-dinner-availability.default.tap
+    Release v20240212115553.0.0 of package where-for-dinner-availability.default.tap
   template:
     spec:
       fetch:
