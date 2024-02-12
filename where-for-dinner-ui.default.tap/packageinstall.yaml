@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: where-for-dinner-ui.default.tap
     versionSelection:
-      constraints: 20240212115332.0.0
+      constraints: 20240212130932.0.0
       prereleases: {}
   serviceAccountName: default
   values:
