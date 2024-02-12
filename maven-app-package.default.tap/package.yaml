@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: maven-app-package.default.tap.20240209225936.0.0
+  name: maven-app-package.default.tap.20240212131957.0.0
 spec:
   refName: maven-app-package.default.tap
-  version: 20240209225936.0.0
+  version: 20240212131957.0.0
   releaseNotes: |
-    Release v20240209225936.0.0 of package maven-app-package.default.tap
+    Release v20240212131957.0.0 of package maven-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherd451d116066ba13d63703909b.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:22e4f02486c574c00242caebe14c6fbb0055ecdaaa7df503784414ef3a9b082a
+          image: shepherd08293d220f3f0d9d55112edf.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:8cd0ff0fefdb5675f887c7b7441ffa82616a9f4120655190920b90461b42f7de
       template:
       - ytt:
           paths:
