@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: where-for-dinner-search.default.tap
     versionSelection:
-      constraints: 20240212130843.0.0
+      constraints: 20240212132856.0.0
       prereleases: {}
   serviceAccountName: default
   values:
