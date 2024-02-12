@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: steeltoe-app-package.default.tap.20240212191517.0.0
+  name: steeltoe-app-package.default.tap.20240212192531.0.0
 spec:
   refName: steeltoe-app-package.default.tap
-  version: 20240212191517.0.0
+  version: 20240212192531.0.0
   releaseNotes: |
-    Release v20240212191517.0.0 of package steeltoe-app-package.default.tap
+    Release v20240212192531.0.0 of package steeltoe-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherdca547d9e8da105897f35b0b2.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:35e2cf0a821cfa43bae41342cc948a23076d141896f3cab956d948da1f93dab7
+          image: shepherdade9cb3accd7cbcb1b1af9af.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:948ddba69f58bc19d679f38b7b9314b84f578474f2321d1f99afd5e9fdb9837d
       template:
       - ytt:
           paths:
@@ -32,12 +32,12 @@ spec:
           description: Used to generate resource names.
           default: steeltoe-app-package
         minScale:
-          type: integer
+          type: string
           nullable: true
           description: If set, overrides the default Knative Service minimum number of replicas.
           default: null
         maxScale:
-          type: integer
+          type: string
           nullable: true
           description: If set, overrides the default Knative Service maximum number of replicas.
           default: null
