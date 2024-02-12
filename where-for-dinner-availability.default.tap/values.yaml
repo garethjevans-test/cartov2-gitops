@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: where-for-dinner-availability.default.tap-values
+stringData:
+  values.yml: |
+    ---
+    # workload_name: example
