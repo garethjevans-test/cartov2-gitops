@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: where-for-dinner-api-gateway.default.tap
     versionSelection:
-      constraints: 20240212113304.0.0
+      constraints: 20240212115453.0.0
       prereleases: {}
   serviceAccountName: default
   values:
