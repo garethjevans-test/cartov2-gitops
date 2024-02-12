@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: maven-app-package.default.tap.20240212191442.0.0
+  name: maven-app-package.default.tap.20240212192618.0.0
 spec:
   refName: maven-app-package.default.tap
-  version: 20240212191442.0.0
+  version: 20240212192618.0.0
   releaseNotes: |
-    Release v20240212191442.0.0 of package maven-app-package.default.tap
+    Release v20240212192618.0.0 of package maven-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherdca547d9e8da105897f35b0b2.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:d95e0b57c059ebaa4ff70965a35edccec00fd2d8e850a77adbc2c4843e7c5352
+          image: shepherdade9cb3accd7cbcb1b1af9af.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:ae4f645f7aa5cc3367c12fe6a4557bd42af857723f03e5b1a9594516593ff96b
       template:
       - ytt:
           paths:
@@ -32,12 +32,12 @@ spec:
           description: Used to generate resource names.
           default: maven-app-package
         minScale:
-          type: integer
+          type: string
           nullable: true
           description: If set, overrides the default Knative Service minimum number of replicas.
           default: null
         maxScale:
-          type: integer
+          type: string
           nullable: true
           description: If set, overrides the default Knative Service maximum number of replicas.
           default: null
