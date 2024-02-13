@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: golang-app-package.default.tap.20240213183016.0.0
+  name: golang-app-package.default.tap.20240213184516.0.0
 spec:
   refName: golang-app-package.default.tap
-  version: 20240213183016.0.0
+  version: 20240213184516.0.0
   releaseNotes: |
-    Release v20240213183016.0.0 of package golang-app-package.default.tap
+    Release v20240213184516.0.0 of package golang-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherdff05f2788b05512e31047bab.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:db711da62cc8d7930fdb3c7ebd2d8f4f66ed62bea883a3c20da59d8e57252723
+          image: shepherda8777ad156ec9df4457b7df6.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:2528bf2f23465d904e327f4272791e99fef8020bdce89baa0834b845e06d9b56
       template:
       - ytt:
           paths:
@@ -32,12 +32,12 @@ spec:
           description: Used to generate resource names.
           default: golang-app-package
         minScale:
-          type: string
+          type: integer
           nullable: true
           description: If set, overrides the default Knative Service minimum number of replicas.
           default: null
         maxScale:
-          type: string
+          type: integer
           nullable: true
           description: If set, overrides the default Knative Service maximum number of replicas.
           default: null
