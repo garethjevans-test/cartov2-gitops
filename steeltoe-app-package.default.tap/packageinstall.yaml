@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: steeltoe-app-package.default.tap
     versionSelection:
-      constraints: 20240213103207.0.0
+      constraints: 20240213105334.0.0
       prereleases: {}
   serviceAccountName: default
   values:
