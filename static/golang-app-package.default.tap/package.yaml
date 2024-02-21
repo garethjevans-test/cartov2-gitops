@@ -1,0 +1,67 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: golang-app-package.default.tap.20240221001747.0.0
+spec:
+  refName: golang-app-package.default.tap
+  version: 20240221001747.0.0
+  releaseNotes: |
+    Release v20240221001747.0.0 of package golang-app-package.default.tap
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: us-west1-docker.pkg.dev/app-last-mile/public/golang-app-package-bundle@sha256:bdf6133fc17199b73475539b175caf09468f20bc994ba4cddc2f41816fdf5122
+      template:
+      - ytt:
+          paths:
+          - .
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      type: object
+      additionalProperties: false
+      properties:
+        workload_name:
+          type: string
+          description: Used to generate resource names.
+          default: golang-app-package
+        minScale:
+          type: string
+          nullable: true
+          description: If set, overrides the default Knative Service minimum number of replicas.
+          default: null
+        maxScale:
+          type: string
+          nullable: true
+          description: If set, overrides the default Knative Service maximum number of replicas.
+          default: null
+        livenessProbe:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].livenessProbe set by the Supply Chain.
+          default: null
+        readinessProbe:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].readinessProbe set by the Supply Chain.
+          default: null
+        resources:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].resources set by the Supply Chain.
+          default: null
+        env:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].env set by the Supply Chain.
+          default: null
+        securityContext:
+          nullable: true
+          description: Overrides the default Knative Service.spec.containers[0].securityContext set by the Supply Chain.
+          default: null
+        knativeAnnotations:
+          nullable: true
+          description: Specifies additional annotations to merge into Knative Service.spec.metadata.annotations.
+          default: null
