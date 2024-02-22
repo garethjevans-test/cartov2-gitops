@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: golang-app-package.default.tap.20240222200518.0.0
+  name: golang-app-package.default.tap.20240222235522.0.0
 spec:
   refName: golang-app-package.default.tap
-  version: 20240222200518.0.0
+  version: 20240222235522.0.0
   releaseNotes: |
-    Release v20240222200518.0.0 of package golang-app-package.default.tap
+    Release v20240222235522.0.0 of package golang-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherdf9534d00c1b318ee306de459.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:8ea9f7790e8e1c5579d64c18fca10f33881c67bb97d1d116b5f60ae47deee44b
+          image: shepherd932b4b473e6b1d6fca4e6c8a.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:a35c183b1571957e03a461548c109ef09384ae0d909e985609d277db734191c4
       template:
       - ytt:
           paths:
@@ -54,9 +54,19 @@ spec:
           description: Overrides the default Knative Service.spec.containers[0].resources set by the Supply Chain.
           default: null
         env:
-          nullable: true
-          description: Overrides the default Knative Service.spec.containers[0].env set by the Supply Chain.
-          default: null
+          type: array
+          description: Merges with the default Deployment.spec.containers[0].env set by the Supply Chain. If there is a conflict, the value set here will be used.
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+                default: ""
+              value:
+                type: string
+                default: ""
+          default: []
         securityContext:
           nullable: true
           description: Overrides the default Knative Service.spec.containers[0].securityContext set by the Supply Chain.
