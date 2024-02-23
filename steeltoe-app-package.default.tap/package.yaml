@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: steeltoe-app-package.default.tap.20240223135627.0.0
+  name: steeltoe-app-package.default.tap.20240223180148.0.0
 spec:
   refName: steeltoe-app-package.default.tap
-  version: 20240223135627.0.0
+  version: 20240223180148.0.0
   releaseNotes: |
-    Release v20240223135627.0.0 of package steeltoe-app-package.default.tap
+    Release v20240223180148.0.0 of package steeltoe-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherd055f69880bacf7b26b382299.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:e443128557ae8ddb18e51713e4eca69de3a6942598eda310ac303009dc6e82d5
+          image: shepherd98f7f74b66d65c8ebca023e2.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:162cf12e374d0fbb03e378a78d848f8eace6b0858bb42c1daba19af29742244e
       template:
       - ytt:
           paths:
@@ -54,9 +54,19 @@ spec:
           description: Overrides the default Knative Service.spec.containers[0].resources set by the Supply Chain.
           default: null
         env:
-          nullable: true
-          description: Overrides the default Knative Service.spec.containers[0].env set by the Supply Chain.
-          default: null
+          type: array
+          description: Merges with the default Deployment.spec.containers[0].env set by the Supply Chain. If there is a conflict, the value set here will be used.
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+                default: ""
+              value:
+                type: string
+                default: ""
+          default: []
         securityContext:
           nullable: true
           description: Overrides the default Knative Service.spec.containers[0].securityContext set by the Supply Chain.
