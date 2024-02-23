@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: maven-app-package.default.tap.20240222200734.0.0
+  name: maven-app-package.default.tap.20240222235826.0.0
 spec:
   refName: maven-app-package.default.tap
-  version: 20240222200734.0.0
+  version: 20240222235826.0.0
   releaseNotes: |
-    Release v20240222200734.0.0 of package maven-app-package.default.tap
+    Release v20240222235826.0.0 of package maven-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherdf9534d00c1b318ee306de459.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:24be8e68aa2c8580cbd143da1dcd78d923122daf305ffc5f38251c814095e68c
+          image: shepherd932b4b473e6b1d6fca4e6c8a.azurecr.io/tap-install/tcc-test/maven-app-package-bundle@sha256:e804540d3d2e1c2a17bed647b8cd0cb399db68e86c8d58e643504477fa100099
       template:
       - ytt:
           paths:
@@ -54,9 +54,19 @@ spec:
           description: Overrides the default Knative Service.spec.containers[0].resources set by the Supply Chain.
           default: null
         env:
-          nullable: true
-          description: Overrides the default Knative Service.spec.containers[0].env set by the Supply Chain.
-          default: null
+          type: array
+          description: Merges with the default Deployment.spec.containers[0].env set by the Supply Chain. If there is a conflict, the value set here will be used.
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+                default: ""
+              value:
+                type: string
+                default: ""
+          default: []
         securityContext:
           nullable: true
           description: Overrides the default Knative Service.spec.containers[0].securityContext set by the Supply Chain.
