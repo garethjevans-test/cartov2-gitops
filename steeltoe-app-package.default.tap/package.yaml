@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: steeltoe-app-package.default.tap.20240223230320.0.0
+  name: steeltoe-app-package.default.tap.20240225005123.0.0
 spec:
   refName: steeltoe-app-package.default.tap
-  version: 20240223230320.0.0
+  version: 20240225005123.0.0
   releaseNotes: |
-    Release v20240223230320.0.0 of package steeltoe-app-package.default.tap
+    Release v20240225005123.0.0 of package steeltoe-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherd521082d774d621496c8f6b19.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:13e73b3c452ea69d03a4b5a20abdeb985b0500b1f770ea42b6716d63d19393d2
+          image: shepherd4318a4e6acf66a19643395b5.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:12bd2afb9d2463e3c9522ce96b8c022e59dc200015308875ef1680023ab9b5fc
       template:
       - ytt:
           paths:
