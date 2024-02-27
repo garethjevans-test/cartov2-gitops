@@ -11,7 +11,7 @@ spec:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherd9c617260572b6bd7abe4d039.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:d67abab380c8fa58a67e8b37da80536a3c5452007c92aa60f0f7e43b187e5ea8
+          image: shepherdd72a3afdb57146b9b47877ba.azurecr.io/tap-install/tcc-test/steeltoe-app-package-bundle@sha256:995a44724ccc695cb75541c7e196067e9d0fdb4957c4f08c4a874a81109d4e65
       template:
       - ytt:
           paths:
