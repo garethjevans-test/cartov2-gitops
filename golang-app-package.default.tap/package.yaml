@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: golang-app-package.default.tap.20240306015411.0.0
+  name: golang-app-package.default.tap.20240306101959.0.0
 spec:
   refName: golang-app-package.default.tap
-  version: 20240306015411.0.0
+  version: 20240306101959.0.0
   releaseNotes: |
-    Release v20240306015411.0.0 of package golang-app-package.default.tap
+    Release v20240306101959.0.0 of package golang-app-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherda9225192013fedeab721ff93.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:61467efe1da42cc2966feec3092c34f04f685836e9f865e6cde9e563251ba7e8
+          image: shepherde95ec12592e90d8dd17979ff.azurecr.io/tap-install/tcc-test/golang-app-package-bundle@sha256:a00f30ca9d263476bf4e9f085eb41d5bf75e3d4a987ec8658437417a5c31b2a6
       template:
       - ytt:
           paths:
