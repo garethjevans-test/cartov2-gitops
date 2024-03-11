@@ -1,17 +1,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: golang-app-kaniko-package.default.tap.20240311184010.0.0
+  name: golang-app-kaniko-package.default.tap.20240311191356.0.0
 spec:
   refName: golang-app-kaniko-package.default.tap
-  version: 20240311184010.0.0
+  version: 20240311191356.0.0
   releaseNotes: |
-    Release v20240311184010.0.0 of package golang-app-kaniko-package.default.tap
+    Release v20240311191356.0.0 of package golang-app-kaniko-package.default.tap
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: shepherd9a03e50ef875d18bc8075cae.azurecr.io/tap-install/tcc-test/golang-app-kaniko-package-bundle@sha256:44006458e9b06c1709b233bd9df0fe121e62f056433dad427d01b0c3b10e8f78
+          image: shepherdc5b60eaac9a799d896bcd4ac.azurecr.io/tap-install/tcc-test/golang-app-kaniko-package-bundle@sha256:26ef35ab1ca75fa66f6e83fd6dd34f597e00d66432d5ba3033cd96943fa60ca3
       template:
       - ytt:
           paths:
