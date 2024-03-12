@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: golang-app-kaniko-package.default.tap
     versionSelection:
-      constraints: 20240312220411.0.0
+      constraints: 20240312225302.0.0
       prereleases: {}
   serviceAccountName: default
   values:
