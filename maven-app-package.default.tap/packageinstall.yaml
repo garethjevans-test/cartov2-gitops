@@ -6,7 +6,7 @@ spec:
   packageRef:
     refName: maven-app-package.default.tap
     versionSelection:
-      constraints: 20240326121642.0.0
+      constraints: 20240328172732.0.0
       prereleases: {}
   serviceAccountName: default
   values:
